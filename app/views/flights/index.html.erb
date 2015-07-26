@@ -12,16 +12,21 @@
   <%= select_tag :date, options_for_select(@flight_dates), include_blank: true %>
   <br>
   <%= submit_tag 'Search' %>
+<% end %>
 
-  <% if @result_flights %>
+<% if @result_flights %>
+  <%= form_tag root_path, method: 'get' do %>
     <ul>
       <% @result_flights.each do |flight| %>
         <li>
+          <%= radio_button_tag 'flight', flight.id %>
           <p>From: <%= flight.from_airport.code %></p>
           <p>To: <%= flight.to_airport.code %></p>
           <p>Time: <%= flight.start_time %></p>
         </li>
       <% end %>
     </ul>
+    <%= hidden_field_tag('passengers_number', @passengers_number) %>
+    <%= submit_tag 'Buy Flight' %>
   <% end %>
 <% end %>

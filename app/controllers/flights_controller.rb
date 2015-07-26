@@ -11,6 +11,7 @@ class FlightsController < ApplicationController
       else
         @result_flights = Flight.where(start_id: params[:airport][:from_id], end_id: params[:airport][:to_id], start_time: params[:date].to_time..(params[:date].to_time + 1.day))
       end
+      @passengers_number = params[:passengers]
     end
   end
 
