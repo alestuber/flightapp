@@ -15,7 +15,7 @@
 <% end %>
 
 <% if @result_flights %>
-  <%= form_tag root_path, method: 'get' do %>
+  <%= form_tag new_booking_path, method: 'get' do %>
     <ul>
       <% @result_flights.each do |flight| %>
         <li>
@@ -27,6 +27,6 @@
       <% end %>
     </ul>
     <%= hidden_field_tag('passengers_number', @passengers_number) %>
-    <%= submit_tag 'Buy Flight' %>
+    <%= submit_tag 'Book Flight' %>
   <% end %>
 <% end %>
