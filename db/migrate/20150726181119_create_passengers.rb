@@ -3,6 +3,7 @@ class CreatePassengers < ActiveRecord::Migration
     create_table :passengers do |t|
       t.string :name
       t.string :email
+      t.integer :booking_id, index: true, foreign_key: true
 
       t.timestamps null: false
     end

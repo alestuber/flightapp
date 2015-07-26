@@ -1,0 +1,16 @@
+<%= form_for @booking do |f| %>
+  <%= label_tag :flight_id %>
+  <%= f.text_field :flight_id %>
+  <p>From: <%= @flight.from_airport.code %></p>
+  <p>To: <%= @flight.to_airport.code %></p>
+  <p>Time: <%= @flight.start_time %></p>
+  <% @passengers_number.times do %>
+    <%= f.fields_for :passengers, @booking.passengers.build do |ff| %>
+        <p>Passenger</p>
+        Name: <%= ff.text_field :name %>
+        Email: <%= ff.email_field :email %>
+    <% end %>
+  <% end %>
+  <br>
+  <%= f.submit "Confirm Book!" %>
+<% end %>

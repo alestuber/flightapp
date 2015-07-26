@@ -23,14 +23,12 @@ ActiveRecord::Schema.define(version: 20150726181238) do
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.integer  "passenger_id"
     t.integer  "flight_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "bookings", ["flight_id"], name: "index_bookings_on_flight_id", using: :btree
-  add_index "bookings", ["passenger_id"], name: "index_bookings_on_passenger_id", using: :btree
 
   create_table "flights", force: :cascade do |t|
     t.integer  "start_id"
@@ -47,10 +45,12 @@ ActiveRecord::Schema.define(version: 20150726181238) do
   create_table "passengers", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
+    t.integer  "booking_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_index "passengers", ["booking_id"], name: "index_passengers_on_booking_id", using: :btree
+
   add_foreign_key "bookings", "flights"
-  add_foreign_key "bookings", "passengers"
 end
