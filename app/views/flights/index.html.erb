@@ -1,0 +1,10 @@
+<ul>
+  <% @flights.each do |flight| %>
+    <li>
+      <p>From: <%= flight.from_airport.code %></p>
+      <p>To: <%= flight.to_airport.code %></p>
+      <p>Time: <%= flight.start_time %></p>
+      <p>Duration: <%= flight.duration / 60 %> hours and <%= flight.duration % 60 %> minutes</p>
+    </li>
+  <% end %>
+</ul>
