@@ -12,6 +12,6 @@ end
 
 150.times do
   rand_travel = (1..(Airport.count) ).sort_by{rand}[1..2]
-  Flight.create(start_id: Airport.find(rand_travel[0]).id, end_id: Airport.find(rand_travel[1]).id, start_time: rand(Time.now..(Time.now + 30).to_time), duration: rand(60..(20*60)))
+  Flight.create(start_id: Airport.find(rand_travel[0]).id, end_id: Airport.find(rand_travel[1]).id, start_time: rand(Time.now..(Time.now + 30.days).to_time), duration: rand(60..(20*60)))
 end
 

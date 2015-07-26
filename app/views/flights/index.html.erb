@@ -1,10 +1,27 @@
-<ul>
-  <% @flights.each do |flight| %>
-    <li>
-      <p>From: <%= flight.from_airport.code %></p>
-      <p>To: <%= flight.to_airport.code %></p>
-      <p>Time: <%= flight.start_time %></p>
-      <p>Duration: <%= flight.duration / 60 %> hours and <%= flight.duration % 60 %> minutes</p>
-    </li>
+<%= form_tag root_path, method: 'get' do %>
+  <%= label_tag :from %>
+  <%= select :airport, :from_id, @airports %>
+  <br>
+  <%= label_tag :to %>
+  <%= select :airport, :to_id, @airports %>
+  <br>
+  <%= label_tag :passengers %>
+  <%= select_tag :passengers, options_for_select(@passengers) %>
+  <br>
+  <%= label_tag :date %>
+  <%= select_tag :date, options_for_select(@flight_dates), include_blank: true %>
+  <br>
+  <%= submit_tag 'Search' %>
+
+  <% if @result_flights %>
+    <ul>
+      <% @result_flights.each do |flight| %>
+        <li>
+          <p>From: <%= flight.from_airport.code %></p>
+          <p>To: <%= flight.to_airport.code %></p>
+          <p>Time: <%= flight.start_time %></p>
+        </li>
+      <% end %>
+    </ul>
   <% end %>
-</ul>
+<% end %>
