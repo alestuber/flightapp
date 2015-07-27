@@ -1,0 +1,13 @@
+<p>BOOKING INFORMATION</p>
+<h1>FROM:</h1>
+<p><%= @booking.flight.from_airport.code %></p>
+<h1>TO:</h1>
+<p><%= @booking.flight.to_airport.code %></p>
+<h1>ARRIVING AT:</h1>
+<p><%= @booking.flight.start_time %></p>
+<h1>BOOKING FOR <%= @booking.passengers.count %> PASSENGERS:</h1>
+<ul>
+  <% @booking.passengers.each do |p| %>
+    <li><%= p.name %></li>
+  <% end %>
+</ul>

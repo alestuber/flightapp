@@ -8,7 +8,11 @@ class BookingsController < ApplicationController
   def create
     @flight = Flight.find params[:booking][:flight_id]
     @booking = @flight.bookings.create booking_params
-    redirect_to root_path
+    redirect_to @booking
+  end
+
+  def show
+    @booking = Booking.find params[:id]
   end
 
   private
